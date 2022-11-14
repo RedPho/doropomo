@@ -8,17 +8,33 @@
   <title>Doromopo</title>
 </head>
 <body>
+  <h1>How to study more effectively with Doromopo?</h1>
+  <ol id="effectivity">
+    <li>Start with a pomodoro: ~25mins</li>
+    <li>Then take a break: ~5mins</li>
+    <li>Take another break: ~30mins</li>
+    <div>(You get more motivated when you take 2 breaks in a row)</div>
+    <div>Repeat</div>
+  </ol>
+  <div class="buttons">
+    <button id="chooseP">Pomodoro</button>
+    <button id="chooseSB">Short Break</button>
+    <button id="chooseLB">Long Break</button>
+  </div>
   <div>
     <p id="min">25</p>
     <p id="sec">00</p>
   </div>
-  <button id="start">Start</button>
-  <button id="stop">Stop</button>
-  <button id="reset">Reset</button>
+  <div class="buttons">
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+    <button id="reset">Reset</button>
+  </div>
+  
   <div class="input-container">
-    <label for="pomodoro">Pomodoro</label><input type="number" name="pomodoro" id="pomodoro">
-    <label for="short">Short Break</label><input type="number" name="short" id="short">
-    <label for="long">Long Break</label><input type="number" name="long" id="long">
+    <label for="pomodoro">Pomodoro: <span>25</span><span>min</span></label><input type="number" name="pomodoro" id="pomodoro" value="25">
+    <label for="short">Short Break: <span>5</span><span>min</span></label><input type="number" name="short" id="short" value="5">
+    <label for="long">Long Break: <span>30</span><span>min</span></label><input type="number" name="long" id="long" value="30">
   </div>
   
 </body>
