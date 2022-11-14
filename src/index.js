@@ -10,5 +10,3 @@ stopBtn.addEventListener("click", stopTimer);
 
 let resetBtn = document.getElementById("reset");
 resetBtn.addEventListener("click", resetTimer);
-
-
