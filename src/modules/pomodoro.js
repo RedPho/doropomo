@@ -2,6 +2,8 @@ var minFirst = document.getElementById("min").innerText;
 var secFirst = document.getElementById("sec").innerText;
 var secInterval;
 var minInterval;
+
+
 console.log(secInterval);
 
 function startTimer(){
