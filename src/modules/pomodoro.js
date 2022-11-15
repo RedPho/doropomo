@@ -29,9 +29,9 @@ function createPomodoroPage() {
                         <button id="reset">Reset</button>
                       </div>
                       <div class="input-container">
-                        <label for="pomodoro">Pomodoro: <span>25</span><span>min</span></label><input type="number" name="pomodoro" id="pomodoro" value="25">
-                        <label for="short">Short Break: <span>5</span><span>min</span></label><input type="number" name="short" id="short" value="5">
-                        <label for="long">Long Break: <span>30</span><span>min</span></label><input type="number" name="long" id="long" value="30">
+                        <label>Pomodoro: <input type="number" name="pomodoro" id="pomodoro" value="25"><span>mins</span></label>
+                        <label>Short Break: <input type="number" name="short" id="short" value="5"><span>mins</span></label>
+                        <label>Long Break: <input type="number" name="long" id="long" value="30"><span>mins</span></label>
                       </div>`;
   let startBtn = document.getElementById("start");
   startBtn.addEventListener("click", startTimer);
@@ -85,8 +85,9 @@ function startTimer(){
     secInterval = setInterval(() => {
       if (sec.innerText <= 0) {
         if(min.innerText <= 0) {
+            stopTimer()
             clearInterval(secInterval);
-
+            window.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ", "_blank");
         }
         sec.innerText = 60;
       }
