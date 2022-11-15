@@ -42,6 +42,15 @@ function createPomodoroPage() {
   let resetBtn = document.getElementById("reset");
   resetBtn.addEventListener("click", resetTimer);
   setFirstMinAndSec();
+  
+  let pomodoroBtn = document.getElementById("chooseP");
+  pomodoroBtn.addEventListener("click", clickPomodoroBtn);
+
+  let shortBreakBtn = document.getElementById("chooseSB");
+  shortBreakBtn.addEventListener("click", clickShortBreakBtn);
+
+  let longBreakBtn = document.getElementById("chooseLB");
+  longBreakBtn.addEventListener("click", clickLongBreakBtn);
 }
 
 function setFirstMinAndSec() {
@@ -50,8 +59,6 @@ function setFirstMinAndSec() {
   secInterval;
   minInterval;
 }
-
-console.log(secInterval);
 
 function startTimer(){
   if ((secInterval == undefined) && (minInterval == undefined)) {
@@ -107,6 +114,24 @@ function timeAmount(x) {
   let min = document.getElementById("min");
   min.innerText = x;
   minFirst = document.getElementById("min").innerText;
+  resetTimer();
 }
+
+function clickPomodoroBtn() {
+  let pomodoroInput = document.getElementById("pomodoro").value;
+  timeAmount(pomodoroInput);
+}
+
+function clickShortBreakBtn() {
+  let shortBreakInput = document.getElementById("short").value;
+  timeAmount(shortBreakInput);
+}
+
+function clickLongBreakBtn() {
+  let longBreakInput = document.getElementById("long").value;
+  timeAmount(longBreakInput);
+}
+
+
 
 export {setFirstMinAndSec, createPomodoroPage, startTimer, stopTimer, resetTimer, timeAmount};
