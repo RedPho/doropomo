@@ -1,8 +1,55 @@
-var minFirst = document.getElementById("min").innerText;
-var secFirst = document.getElementById("sec").innerText;
 var secInterval;
 var minInterval;
+var minFirst;
+var secFirst;
 
+function createPomodoroPage() {
+  let mainDiv = document.getElementById("main");
+  mainDiv.innerHTML = `<h1>How to study more effectively with Doromopo?</h1>
+                      <ol id="effectivity">
+                        <li>Start with a pomodoro: ~25mins</li>
+                        <li>Then take a break: ~5mins</li>
+                        <li>Take another break: ~30mins</li>
+                        <div>(You get more motivated when you take 2 breaks in a row)</div>
+                        <div>Repeat</div>
+                      </ol>
+                      <div class="buttons">
+                        <button id="chooseP">Pomodoro</button>
+                        <button id="chooseSB">Short Break</button>
+                        <button id="chooseLB">Long Break</button>
+                      </div>
+                      <div id="time">
+                        <p id="min">25</p>
+                        <p>:</p>
+                        <p id="sec">00</p>
+                      </div>
+                      <div class="buttons">
+                        <button id="start">Start</button>
+                        <button id="stop">Pause</button>
+                        <button id="reset">Reset</button>
+                      </div>
+                      <div class="input-container">
+                        <label for="pomodoro">Pomodoro: <span>25</span><span>min</span></label><input type="number" name="pomodoro" id="pomodoro" value="25">
+                        <label for="short">Short Break: <span>5</span><span>min</span></label><input type="number" name="short" id="short" value="5">
+                        <label for="long">Long Break: <span>30</span><span>min</span></label><input type="number" name="long" id="long" value="30">
+                      </div>`;
+  let startBtn = document.getElementById("start");
+  startBtn.addEventListener("click", startTimer);
+
+  let stopBtn = document.getElementById("stop");
+  stopBtn.addEventListener("click", stopTimer);
+
+  let resetBtn = document.getElementById("reset");
+  resetBtn.addEventListener("click", resetTimer);
+  setFirstMinAndSec();
+}
+
+function setFirstMinAndSec() {
+  minFirst = document.getElementById("min").innerText;
+  secFirst = document.getElementById("sec").innerText;
+  secInterval;
+  minInterval;
+}
 
 console.log(secInterval);
 
@@ -62,4 +109,4 @@ function timeAmount(x) {
   minFirst = document.getElementById("min").innerText;
 }
 
-export {startTimer, stopTimer, resetTimer, timeAmount};
+export {setFirstMinAndSec, createPomodoroPage, startTimer, stopTimer, resetTimer, timeAmount};
