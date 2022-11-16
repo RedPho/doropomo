@@ -2,6 +2,7 @@ var secInterval;
 var minInterval;
 var minFirst;
 var secFirst;
+let pomodoro_notification = document.getElementById("notification");
 
 function createPomodoroPage() {
   let mainDiv = document.getElementById("main");
@@ -62,7 +63,6 @@ function setFirstMinAndSec() {
 
 function startTimer(){
   if ((secInterval == undefined) && (minInterval == undefined)) {
-    console.log("hii from pomodoro.js");
     let min = document.getElementById("min");
     let sec = document.getElementById("sec");
 
@@ -76,6 +76,7 @@ function startTimer(){
     minInterval = setInterval(() => {
       if(minInterval.innerText <= 0) {
         clearInterval(minInterval);
+        min.innerText = "0";
       }
       else {
         min.innerText--;
@@ -84,12 +85,14 @@ function startTimer(){
     }, 60000);
     secInterval = setInterval(() => {
       if (sec.innerText <= 0) {
-        if(min.innerText <= 0) {
-            stopTimer()
-            clearInterval(secInterval);
-            window.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ", "_blank");
-        }
         sec.innerText = 60;
+        if(min.innerText <= 0) {
+          stopTimer()
+          sec.innerText = "0";
+          
+          clearInterval(secInterval);
+          pomodoro_notification.play();
+        }
       }
       else {
         sec.innerText--;
@@ -132,7 +135,5 @@ function clickLongBreakBtn() {
   let longBreakInput = document.getElementById("long").value;
   timeAmount(longBreakInput);
 }
-
-
 
 export {setFirstMinAndSec, createPomodoroPage, startTimer, stopTimer, resetTimer, timeAmount};

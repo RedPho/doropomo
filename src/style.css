@@ -1,5 +1,5 @@
 body {
-  background-color: aqua;
+  background-image: linear-gradient(90deg, rgb(129, 177, 255), rgb(62, 0, 178));
   display: flex;
   flex-direction: column;
   justify-content: center;
