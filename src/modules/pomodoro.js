@@ -76,7 +76,6 @@ function startTimer(){
     minInterval = setInterval(() => {
       if(minInterval.innerText <= 0) {
         clearInterval(minInterval);
-        min.innerText = "0";
       }
       else {
         min.innerText--;
@@ -89,7 +88,7 @@ function startTimer(){
         if(min.innerText <= 0) {
           stopTimer()
           sec.innerText = "0";
-          
+          min.innerText = "0";
           clearInterval(secInterval);
           pomodoro_notification.play();
         }
@@ -106,6 +105,8 @@ function stopTimer() {
   clearInterval(minInterval);
   secInterval = undefined;
   minInterval = undefined;
+  pomodoro_notification.currentTime = 0;
+  pomodoro_notification.pause();
 }
 
 function resetTimer() {
@@ -116,8 +117,10 @@ function resetTimer() {
 
 function timeAmount(x) {
   let min = document.getElementById("min");
-  min.innerText = x;
-  minFirst = document.getElementById("min").innerText;
+  if (x > 0) {
+    min.innerText = x;
+    minFirst = document.getElementById("min").innerText;
+  }
   resetTimer();
 }
 
