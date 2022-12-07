@@ -30,6 +30,29 @@ function createToDoPage() {
   </div>`;
 
   let todoContainer = document.querySelector("#todo-container");
+
+  for (let i = 0; i <= todoArray.length; i++) {
+    if (!(todoArray[i]==undefined)){
+    let newTodoElement = document.createElement("div");
+    newTodoElement.setAttribute("id", `todo${i}`)
+    newTodoElement.innerHTML = `
+    <div class="todoTitle">Title: ${todoArray[i].title}</div>
+    <div class="todoDescription">Description: ${todoArray[i].description}</div>
+    <div class="todoDate">Due date: ${todoArray[i].dueDate}</div>
+    <div class="todoPriority">Priority: ${todoArray[i].priority}</div>
+    <button id="delete${i}">Delete</button>`;
+    todoContainer.appendChild(newTodoElement);
+    localStorage.setItem("todos", JSON.stringify(todoArray));
+    let deleteTodoBtn = document.getElementById(`delete${i}`);
+    deleteTodoBtn.addEventListener("click", () => {
+      newTodoElement.remove();
+      todoArray[i] = undefined;
+      localStorage.setItem("todos", JSON.stringify(todoArray));
+    }
+    )
+    localStorage.setItem("todos", JSON.stringify(todoArray));
+    }
+  }
   
   let addTodoBtn = document.getElementById("add-todo");
   addTodoBtn.addEventListener("click", () =>
@@ -44,6 +67,7 @@ function createToDoPage() {
     let newTodo = new ToDo(newTodoTitle, newTodoDes, newTodoDate, "normal");
     todoArray.push(newTodo);
     for (let i = 0; i <= todoArray.length; i++) {
+      if (!(todoArray[i]==undefined)){
       let newTodoElement = document.createElement("div");
       newTodoElement.setAttribute("id", `todo${i}`)
       newTodoElement.innerHTML = `
@@ -57,14 +81,15 @@ function createToDoPage() {
       let deleteTodoBtn = document.getElementById(`delete${i}`);
       deleteTodoBtn.addEventListener("click", () => {
         newTodoElement.remove();
-        todoArray.splice(i, 1);
+        todoArray[i] = undefined;
         localStorage.setItem("todos", JSON.stringify(todoArray));
       }
       )
       localStorage.setItem("todos", JSON.stringify(todoArray));
-      console.log(todoArray);
+      }
     }
-    
+    todoArray = todoArray.filter((e) => e!=undefined);
+    localStorage.setItem("todos", JSON.stringify(todoArray));
   }
   )
 }
