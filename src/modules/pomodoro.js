@@ -139,4 +139,4 @@ function clickLongBreakBtn() {
   timeAmount(longBreakInput);
 }
 
-export {setFirstMinAndSec, createPomodoroPage, startTimer, stopTimer, resetTimer, timeAmount};
+export {createPomodoroPage};
